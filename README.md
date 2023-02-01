@@ -1,1 +1,1 @@
-# Javascript_DatastructureandAlgorithm
+# Javascript_DSA
