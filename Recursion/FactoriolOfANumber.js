@@ -1,3 +1,9 @@
+/**
+ * The function calculates the factorial of a given number using recursion.
+ * @param n - The input parameter for the Factorial function, which represents the number for which we
+ * want to calculate the factorial.
+ * @returns the factorial of the input number 'n'.
+ */
 function Factorial(n) {
   if (n <= 0) {
     return 1;
