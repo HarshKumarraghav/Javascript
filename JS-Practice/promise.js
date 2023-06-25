@@ -1,30 +1,22 @@
-// const cart = ["apple", "orange", "pear"];
-// const CreateOrder = (cart) => {
-//   const pr = new Promise((resolve, reject) => {
-//     if (!validCart(cart)) {
-//       reject("Invalid Cart");
-//     }
-//     setTimeout(() => {
-//       resolve({ orderId: 1234 });
-//     }, 2000);
-//   });
-//   return pr;
-// };
-
-// CreateOrder(cart).then((order) => {
-//   console.log(order);
-// });
-
-// const validCart = () => {
-//   return true;
-// };
-
-console.log(this);
-const obj = {
-  name: "John",
-  getName: function () {
-    console.log("this", this);
-  },
+// Create own promise using cart example
+const Cart = ["Apple", "Banana", "Orange"];
+const CreateCart = (cart) => {
+  const pr = new Promise((res, rej) => {
+    if (!validCart(cart)) {
+      const err = new Error("not a valid cart");
+      rej(err);
+    }
+    const DataObj = { orderid: "123243" };
+    setTimeout(() => res(DataObj), 5000);
+  });
+  return pr;
+};
+const validCart = (cart) => {
+  if (cart.length === 0) {
+    return false;
+  } else {
+    return true;
+  }
 };
 
-obj.getName();
+CreateCart(Cart).then((data) => console.log("orderid", data.orderid));
