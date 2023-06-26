@@ -23,12 +23,10 @@ console.log(user1.userInfo.bind(user2, user1.age)("Software Engineer"));
 
 // Create a pollyfill for call() method
 Function.prototype.myCall = function (context, ...args) {
-  if (typeof this !== "function") {
-    throw new TypeError(`${this} is not an function`);
-  }
-  if (typeof context !== "object" || context === null) {
-    throw new TypeError(`${context} is not an object`);
-  }
+  if (typeof this !== "function")
+    throw new TypeError(`${this} is not function`);
+  if (typeof context !== "object" || context === null)
+    throw new TypeError(`${context} not a valid object`);
   const uniqueId = `${Date.now()}`;
   context[uniqueId] = this;
   const result = context[uniqueId](...args);
@@ -39,15 +37,11 @@ Function.prototype.myCall = function (context, ...args) {
 console.log(user1.userInfo.myCall(user2, user1.age, "Software Engineer"));
 // Create a pollyfill for apply() method
 Function.prototype.myApply = function (context, args) {
-  if (typeof context !== "object" || context === null) {
-    throw new TypeError(`${context} is not an object`);
-  }
-  if (!Array.isArray(args)) {
-    throw new TypeError(`${args} is not an Array`);
-  }
-  if (typeof this !== "function") {
-    throw new TypeError(`${this} is not an function`);
-  }
+  if (typeof this !== "function")
+    throw new TypeError(`${this} is not function`);
+  if (typeof context !== "object" || context === null)
+    throw new TypeError(`${context} not a valid object`);
+  if (!Array.isArray(args)) throw new TypeError(`${args} not a valid Array`);
   const uniqueId = `${Date.now()}`;
   context[uniqueId] = this;
   const result = context[uniqueId](...args);
@@ -57,20 +51,18 @@ Function.prototype.myApply = function (context, args) {
 // this is how myApply() method works
 console.log(user1.userInfo.myApply(user2, [user1.age, "Software Engineer"]));
 
-// Create a pollyfill for bind() method
+// // Create a pollyfill for bind() method
 Function.prototype.myBind = function (context, ...args) {
-  if (typeof this !== "function") {
-    throw new TypeError(`${this} is not a function`);
-  }
-  if (typeof context !== "object" || context === null) {
-    throw new TypeError(`${context} is not an Object, pass a valid object`);
-  }
+  if (typeof this !== "function")
+    throw new TypeError(`${this} is not function`);
+  if (typeof context !== "object" || context === null)
+    throw new TypeError(`${context} not a valid object`);
   const uniqueId = `${Date.now()}`;
   context[uniqueId] = this;
-  const Bind = function (...newArry) {
-    return context[uniqueId](...args, ...newArry);
+  const bind = function (...newargs) {
+    return context[uniqueId](...args, ...newargs);
   };
-  return Bind;
+  return bind;
 };
 // this is how myBind() method works
 console.log(user1.userInfo.myBind(user2, user1.age)("Software Engineer"));
