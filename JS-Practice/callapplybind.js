@@ -1,7 +1,6 @@
 function userInfo(age, work) {
   return `${this.firstName} ${this.lastName} is ${age} year old and he is a ${work}`;
 }
-
 const user1 = {
   firstName: "John",
   lastName: "Doe",
@@ -13,14 +12,12 @@ const user2 = {
   lastName: "Doe",
   age: 22,
 };
-
 // this is how call() method works
 console.log(user1.userInfo.call(user2, user1.age, "Software Engineer"));
 // this is how apply() method works
 console.log(user1.userInfo.apply(user2, [user1.age, "Software Engineer"]));
 // this is how bind() method works
 console.log(user1.userInfo.bind(user2, user1.age)("Software Engineer"));
-
 // Create a pollyfill for call() method
 Function.prototype.myCall = function (context, ...args) {
   if (typeof this !== "function")
@@ -50,8 +47,7 @@ Function.prototype.myApply = function (context, args) {
 };
 // this is how myApply() method works
 console.log(user1.userInfo.myApply(user2, [user1.age, "Software Engineer"]));
-
-// // Create a pollyfill for bind() method
+// Create a pollyfill for bind() method
 Function.prototype.myBind = function (context, ...args) {
   if (typeof this !== "function")
     throw new TypeError(`${this} is not function`);
