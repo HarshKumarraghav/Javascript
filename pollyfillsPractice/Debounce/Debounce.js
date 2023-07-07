@@ -3,7 +3,7 @@ const getData = () => {
   console.log("Fetching data of search...", count++);
 };
 
-const myDebounce = (fn, t) => {
+const myDebounceCode = (fn, t) => {
   let timer;
   const debounce = (...args) => {
     if (timer) clearInterval(timer);
@@ -14,4 +14,4 @@ const myDebounce = (fn, t) => {
   return debounce;
 };
 
-const betterGetData = myDebounce(getData, 300);
+const betterGetData = myDebounceCode(getData, 300);
