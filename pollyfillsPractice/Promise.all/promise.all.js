@@ -29,17 +29,15 @@ Promise.all([Dummy1(5000), Dummy2(2000), Dummy3(4000)]).then((res) =>
   console.log(res)
 );
 
-const myPromiseAll = (args) => {
-  if (!Array.isArray(args)) {
-    throw new TypeError("Not a valid argument");
-  }
+const myPromiseAllCode = (args) => {
+  if (!Array.isArray(args)) throw new TypeError("not a valid array");
   const pr = new Promise((res, rej) => {
     const output = [];
     let count = 0;
-    args.forEach((elm, i) => {
-      elm
-        .then((result) => {
-          output[i] = result;
+    args.forEach((promise, index) => {
+      promise
+        .then((ressult) => {
+          output[index] = ressult;
           count++;
           if (count === args.length) {
             res(output);
@@ -50,6 +48,6 @@ const myPromiseAll = (args) => {
   });
   return pr;
 };
-myPromiseAll([Dummy1(5000), Dummy2(2000), Dummy3(4000)]).then((res) =>
+myPromiseAllCode([Dummy1(5000), Dummy2(2000), Dummy3(4000)]).then((res) =>
   console.log(res)
 );
