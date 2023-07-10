@@ -1,26 +1,19 @@
-var isAnagram = function (s, t) {
-  let obj = {};
-  if (s.length <= 0 || t.length <= 0) {
-    return false;
-  } else if (s.length != t.length) {
-    return false;
-  } else {
-    for (let i = 0; i < s.length; i++) {
-      let letter = s[i];
-      if (obj[letter]) {
-        obj[letter] += 1;
-      } else {
-        obj[letter] = 1;
-      }
-    }
-    for (let i = 0; i < t.length; i++) {
-      let letter = t[i];
-      if (!obj[letter]) {
-        return false;
-      } else {
-        obj[letter] -= 1;
-      }
-    }
-    return true;
-  }
+String.prototype.sortStrings = function () {
+  return this.split("").sort().join("");
 };
+var isAnagram = function (s, t) {
+  const S = s.sortStrings();
+  const T = t.sortStrings();
+  for (let i = 0; i < S.length; i++) {
+    if (s.length <= 0 || t.length <= 0) return false;
+    else if (s.length < t.length || t.length < s.length) return false;
+    if (S[i] !== T[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+
+const s = "anagram";
+const t = "nagaram";
+console.log(isAnagram(s, t));
