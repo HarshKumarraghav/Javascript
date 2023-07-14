@@ -16,21 +16,17 @@ const User2 = {
 
 //This is how apply work.
 console.log(User.getFullName.apply(User2, [User2.age, "Software Engineer"]));
-
 Function.prototype.myApply = function (context, args) {
-  if (typeof context !== "object" || context === null) {
-    throw new TypeError("Invalid context. Context must be an object.");
-  }
-  if (!Array.isArray(args) || args === null) {
-    throw new TypeError("Invalid argument. Context must be an array.");
-  }
-  if (typeof this !== "function") {
-    throw new TypeError("it is not a function");
-  }
-  uniqueId = `${Date.now()}`;
-  context[uniqueId] = this;
-  const result = context[uniqueId](...args);
-  delete context[uniqueId];
+  if (typeof this !== "function")
+    throw new TypeError(`${this} is not a valid function`);
+  if (typeof context !== "object")
+    throw new TypeError(`${context} is not a valid object`);
+  if (!Array.isArray(args)) throw new TypeError(`${args} is not a valid Array`);
+  const Index = `${Date.now()}`;
+  context[Index] = this;
+  const result = context[Index](...args);
+  delete context[Index];
   return result;
 };
 console.log(User.getFullName.myApply(User2, [User2.age, "Software Engineer"]));
+console.log(User2);
