@@ -17,7 +17,7 @@ const User2 = {
 console.log(User.getFullName.call(User2, User2.age, "Software Engineer"));
 
 // let's write own version of call method
-Function.prototype.myCallFunction = function (context, ...args) {
+Function.prototype.myCall = function (context, ...args) {
   if (typeof context !== "object")
     throw new TypeError(`${context} not a valid object`);
   if (typeof this !== "function")
@@ -31,5 +31,5 @@ Function.prototype.myCallFunction = function (context, ...args) {
 
 console.log(
   "My Call",
-  User.getFullName.myCallFunction(User2, User2.age, "Software Engineer")
+  User.getFullName.myCall(User2, User2.age, "Software Engineer")
 );

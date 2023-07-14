@@ -21,16 +21,14 @@ console.log(
 );
 
 Function.prototype.myBind = function (context, ...args) {
-  if (typeof context !== "object" || context === null) {
-    throw new TypeError("Invalid context. Context must be an object.");
-  }
-  if (typeof this !== "function") {
-    throw new TypeError(`${this} is not the function`);
-  }
-  const uniqueId = `${Date.now()}`;
-  context[uniqueId] = this;
-  const bind = function (...newargs) {
-    return context[uniqueId](...args, newargs);
+  if (typeof this !== "function")
+    throw new TypeError(`${this} is not a valid function`);
+  if (typeof context !== "object")
+    throw new TypeError(`${context} is not a valid object`);
+  const Index = `${Date.now()}`;
+  context[Index] = this;
+  const bind = (...newargs) => {
+    return context[Index](...args, ...newargs);
   };
   return bind;
 };
