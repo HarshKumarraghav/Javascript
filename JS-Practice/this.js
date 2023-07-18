@@ -4,7 +4,7 @@ function sayMyName(age, position) {
 
 const obj1 = {
   name: "Harsh",
-  sayMyName,
+  sayMyName: sayMyName,
 };
 
 const obj2 = {
@@ -18,4 +18,4 @@ console.log(obj1.sayMyName.call(obj2, 20, "Software Engineer"));
 // understanding of "apply" function.
 console.log(obj1.sayMyName.apply(obj2, [10, "Software Engineer"]));
 // understanding of "bind" function.
-console.log(obj1.sayMyName.bind(obj2, 20, "Software Engineer"));
+console.log(obj1.sayMyName.bind(obj2, 20, "Software Engineer")());
