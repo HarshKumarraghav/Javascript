@@ -2,12 +2,14 @@ let count = 0;
 const fetechData = () => {
   console.log("Fetching Data...", count++);
 };
-const myDebounce = (fn, d) => {
+const myDebounceCode = (fn, d) => {
   let timer;
-  const debounce = (...arg) => {
+  const debounce = (...args) => {
     if (timer) clearInterval(timer);
-    timer = setTimeout(() => fn(...arg), d);
+    timer = setTimeout(() => {
+      fn(...args);
+    }, d);
   };
   return debounce;
 };
-const getData = myDebounce(fetechData, 300);
+const getData = myDebounceCode(fetechData, 300);
