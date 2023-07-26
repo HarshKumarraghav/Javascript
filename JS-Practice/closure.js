@@ -10,11 +10,11 @@ function printInTermOfLet() {
     }, i * 3000);
   }
 }
+printInTermOfLet();
 /**
  * The function uses a for loop and setTimeout to print the value of i after a certain delay, using the
  * var keyword to declare the variable.
  */
-printInTermOfLet();
 function printInTermOfVar() {
   for (var i = 0; i < 5; i++) {
     function close(i) {
