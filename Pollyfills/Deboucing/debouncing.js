@@ -4,12 +4,12 @@ const fetechData = () => {
 };
 const myDebounceCode = (fn, d) => {
   let timer;
-  const debounce = (...args) => {
+  const Debounce = (...args) => {
     if (timer) clearInterval(timer);
     timer = setTimeout(() => {
       fn(...args);
     }, d);
   };
-  return debounce;
+  return Debounce;
 };
 const getData = myDebounceCode(fetechData, 300);

@@ -1,12 +1,12 @@
 const myThrottleCode = (fn, d) => {
   let last = 0;
-  const throttle = (...args) => {
+  const Throttle = (...args) => {
     let now = new Date().getTime();
     if (now - last < d) return;
     last = now;
     fn(...args);
   };
-  return throttle;
+  return Throttle;
 };
 const clickBtn = document.getElementsByClassName("btn_click");
 const clickHanlder = () => {
