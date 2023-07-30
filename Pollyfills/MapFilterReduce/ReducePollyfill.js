@@ -14,14 +14,14 @@ const arr = [
 const TotalAge = arr.reduce((acc, cur) => acc + cur.age, 0);
 console.log("TotalAge", TotalAge);
 
-Array.prototype.myReduce = function (cd, initialValue) {
+Array.prototype.myReduce = function (cb, initialValue) {
   if (!Array.isArray(this)) throw new TypeError(`${this} is not a valid array`);
-  if (typeof cd !== "function") throw new TypeError("Not a valid function");
-  var Accumulator = initialValue;
+  if (typeof cb !== "function") throw new TypeError("Not a valid function");
+  let acc = initialValue;
   for (let i = 0; i < this.length; i++) {
-    Accumulator = cd(Accumulator, this[i], i, this);
+    acc = cb(acc, this[i], i, this);
   }
-  return Accumulator;
+  return acc;
 };
 const thTotalAge = arr.myReduce((acc, cur) => acc + cur.age, 0);
 console.log("thTotalAge", thTotalAge);

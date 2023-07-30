@@ -19,13 +19,12 @@ Array.prototype.myFilter = function (cb) {
     throw new TypeError(`${this} is not a vailed array`);
   if (typeof cb !== "function") throw new TypeError("not a valid function");
 
-  const temp = [];
+  const tempArray = [];
+
   for (let i = 0; i < this.length; i++) {
-    if (cb(this[i], i, this)) {
-      temp.push(this[i]);
-    }
+    if (cb(this[i], i, this)) tempArray.push(this[i]);
   }
-  return temp;
+  return tempArray;
 };
 const MyFilterData = arr.myFilter((val) => val.age >= 50);
 console.log("MyFilterData", MyFilterData);
