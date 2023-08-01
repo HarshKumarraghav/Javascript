@@ -30,22 +30,22 @@ Promise.all([Dummy1(5000), Dummy2(2000), Dummy3(4000)]).then((res) =>
   console.log(res)
 );
 
-const myPromiseAll = (tasks) => {
+const MyPromiseAll = (tasks) => {
+  const Output = [];
   let count = 0;
-  const output = [];
-  const pr = new Promise((res, rej) => {
-    tasks.forEach((promise, index) => {
-      promise
+  const Pr = new Promise((res, rej) => {
+    tasks.forEach((element, i) => {
+      element
         .then((result) => {
-          output[index] = result;
+          Output[i] = result;
           count++;
-          if (count === tasks.length) res(output);
+          if (count === tasks.length) res(Output);
         })
         .catch((err) => rej(err));
     });
   });
-  return pr;
+  return Pr;
 };
-myPromiseAll([Dummy2(2000), Dummy1(5000), Dummy3(4000)]).then((res) =>
+MyPromiseAll([Dummy2(2000), Dummy1(5000), Dummy3(4000)]).then((res) =>
   console.log("mypromise.all", res)
 );
