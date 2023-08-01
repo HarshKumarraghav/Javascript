@@ -1,4 +1,9 @@
-const myThrottleCode = (fn, d) => {
+let count = 0;
+const ButtonClickHandler = () => {
+  console.log("count", count++);
+};
+const MyThrottle = (fn, d) => {
+  if (typeof fn !== "function") throw new TypeError("Not a valid function");
   let last = 0;
   const Throttle = (...args) => {
     let now = new Date().getTime();
@@ -8,8 +13,6 @@ const myThrottleCode = (fn, d) => {
   };
   return Throttle;
 };
-const clickBtn = document.getElementsByClassName("btn_click");
-const clickHanlder = () => {
-  console.log("click");
-};
-clickBtn[0].addEventListener("click", myThrottleCode(clickHanlder, 2000));
+
+const btn_Click = document.getElementsByClassName("btn_click");
+btn_Click[0].addEventListener("click", MyThrottle(ButtonClickHandler, 2000));
