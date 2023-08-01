@@ -4,10 +4,10 @@
  * up to a maximum of 5.
  */
 function printInTermOfLet() {
-  for (let i = 0; i < 5; i++) {
+  for (let i = 1; i < 6; i++) {
     setTimeout(() => {
       console.log(i);
-    }, i * 3000);
+    }, i * 1000);
   }
 }
 printInTermOfLet();
@@ -16,13 +16,13 @@ printInTermOfLet();
  * var keyword to declare the variable.
  */
 function printInTermOfVar() {
-  for (var i = 0; i < 5; i++) {
-    function close(i) {
+  for (var i = 1; i < 6; i++) {
+    function closure(val) {
       setTimeout(() => {
-        console.log(i);
-      }, i * 3000);
+        console.log(val);
+      }, val * 1000);
     }
-    close(i);
+    closure(i);
   }
 }
 
