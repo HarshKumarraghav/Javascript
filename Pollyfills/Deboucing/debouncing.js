@@ -1,15 +1,16 @@
 let count = 0;
-const fetechData = () => {
-  console.log("Fetching Data...", count++);
+const FetchData = () => {
+  console.log("count", count++);
 };
-const myDebounceCode = (fn, d) => {
+
+const MyDebounce = (fn, d) => {
+  if (typeof fn !== "function") throw new TypeError("Not a valid function!");
   let timer;
-  const Debounce = (...args) => {
+  const Debounce = (...arg) => {
     if (timer) clearInterval(timer);
-    timer = setTimeout(() => {
-      fn(...args);
-    }, d);
+    timer = setTimeout(() => fn(...arg), d);
   };
   return Debounce;
 };
-const getData = myDebounceCode(fetechData, 300);
+
+const getData = MyDebounce(FetchData, 300);
