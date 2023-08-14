@@ -29,12 +29,12 @@ Promise.allSettled([Dummy1(3000), Dummy2(5000), Dummy3(4000)]).then((result) =>
 
 const MyPromiseAllSettled = (args) => {
   if (!Array.isArray(args)) throw new TypeError("Not a valid parameter");
-  const MappArgs = args.map((promise) =>
+  const mappedArray = args.map((promise) =>
     promise
       .then((value) => ({ status: "fullfilled", value }))
       .catch((reason) => ({ status: "rejected", reason }))
   );
-  return Promise.all(MappArgs);
+  return Promise.all(mappedArray);
 };
 
 MyPromiseAllSettled([Dummy1(3000), Dummy2(5000), Dummy3(4000)]).then((result) =>
