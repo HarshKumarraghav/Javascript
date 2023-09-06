@@ -5,7 +5,7 @@ const Sub30 = (num) => num - 30;
 const MultipleBy5 = (num) => num * 5;
 const GivePositiveOutput = (num) => Math.abs(num);
 
-const result = givePositiveOutput(multipleBy5(sub1(add2(6))));
+const result = GivePositiveOutput(MultipleBy5(Sub30(Add2(6))));
 
 console.log(result);
 
