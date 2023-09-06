@@ -1,0 +1,9 @@
+Both Compose and pipe function are the concept of functional programming both function kind off perform similar task they are used
+to call multiple function. 
+The only difference between Compose and Pipe is that the order of excutation is oposite
+
+Compose:
+    Compose(function3 , function2 , function1)(value)
+
+Pipe:
+    Pipe(function1, function2, function3)(value)
