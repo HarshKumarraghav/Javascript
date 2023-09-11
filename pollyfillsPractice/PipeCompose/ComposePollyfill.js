@@ -6,4 +6,4 @@ const GivePositiveOutput = (num) => Math.abs(num);
 const compose =
   (...fns) =>
   (input) =>
-    fns.reduceRight((currentVal, func) => func(currentVal), input);
+    fns.reduceRight((currentValue, func) => func(currentValue), input);
