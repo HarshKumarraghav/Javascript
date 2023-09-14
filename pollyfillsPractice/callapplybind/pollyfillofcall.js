@@ -20,14 +20,14 @@ const user2 = {
 console.log(user1.getFullName.call(user2, 18, "software Engineer"));
 
 Function.prototype.myCall = function (context, ...args) {
-  if (typeof this !== "function")
-    throw new TypeError(`${this} this function is not a valid function`);
   if (typeof context !== "object")
     throw new TypeError(`${context} is not a valid object`);
-  const uniqueid = `${Date.now()}`;
-  context[uniqueid] = this;
-  const result = context[uniqueid](...args);
-  delete context[uniqueid];
+  const id = Date.now();
+  context[id] = this;
+  const result = context[id](...args);
+  delete context[id];
   return result;
 };
 console.log("myCall", user1.getFullName.myCall(user2, 18, "software Engineer"));
+
+console.log(user2);

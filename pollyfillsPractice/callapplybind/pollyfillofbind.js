@@ -20,20 +20,21 @@ const user2 = {
 console.log(user1.getFullName.bind(user2, user2.age, user2.proffession)());
 
 Function.prototype.myBind = function (context, ...args) {
-  if (typeof this !== "function") {
-    throw new TypeError(`${this} this is not a valid functions`);
-  }
   if (typeof context !== "object") {
     throw new TypeError(`${context} this is not a valid object`);
   }
-  const uniqueId = `${Date.now()}`;
-  context[uniqueId] = this;
-  const result = (...newargs) => {
-    return context[uniqueId](...args, newargs);
+  const id = Date.now();
+  const bind = (...newArgs) => {
+    context[id] = this;
+    const result = context[id](...args, ...newArgs);
+    delete context[id];
+    return result;
   };
-  return result;
+  return bind;
 };
 console.log(
   "my",
   user1.getFullName.myBind(user2, user2.age, user2.proffession)()
 );
+
+console.log(user2);
