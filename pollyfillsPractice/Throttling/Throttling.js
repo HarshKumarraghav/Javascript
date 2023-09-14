@@ -1,8 +1,8 @@
 const myThrottleCode = (fn, t) => {
   let last = 0;
   const throttle = (...args) => {
-    let now = new Date().getTime();
-    if (now - last < t) return;
+    const now = new Date().getTime();
+    if (now - last < d) return;
     last = now;
     fn(...args);
   };

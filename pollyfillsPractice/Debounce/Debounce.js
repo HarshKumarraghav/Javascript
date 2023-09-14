@@ -7,9 +7,7 @@ const myDebounceCode = (fn, t) => {
   let timer;
   const debounce = (...args) => {
     if (timer) clearInterval(timer);
-    timer = setTimeout(() => {
-      fn(...args);
-    }, t);
+    timer = setTimeout(() => fn(...args), d);
   };
   return debounce;
 };
