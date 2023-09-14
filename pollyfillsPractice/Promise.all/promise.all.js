@@ -36,13 +36,15 @@ const myPromiseAll = (args) => {
   const pr = new Promise((res, rej) => {
     let count = 0;
     const output = [];
-    args.forEach((Element, index) => {
-      Element.then((result) => {
-        output[index] = result;
-        count++;
-        if (count === args.length) res(output);
-      }).catch((err) => rej(err));
-    });
+    args.forEach((promise, index) =>
+      promise
+        .then((result) => {
+          output[index] = result;
+          count++;
+          if (count === args.length) res(output);
+        })
+        .catch((err) => rej(err))
+    );
   });
   return pr;
 };
