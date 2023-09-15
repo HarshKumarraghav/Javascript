@@ -10,7 +10,7 @@ const secondLargest = (arr) => {
     return -1;
   }
 };
-// Ologn
+// O(logN)
 console.log(secondLargest(arr2));
 
 const secondLargestOptimise = (arr) => {
@@ -28,3 +28,4 @@ const secondLargestOptimise = (arr) => {
   return SECOND_LARGEST;
 };
 console.log(secondLargestOptimise(arr1));
+// O(N)
