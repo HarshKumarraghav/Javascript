@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-const Cart = () => {
+const Pagination = () => {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
   const [cart, setCart] = useState([]);
-  const [skip, setSkip] = useState(0);
+  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const FetchDataHandler = async () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `https://dummyjson.com/products?limit=10&skip=${skip}`
+        `https://dummyjson.com/products?limit=100`
       );
       console.log(data.products);
-      setProducts((prev) => [...prev, ...data.products]);
+      setProducts(data.products);
     } catch (error) {
       console.log(error);
     } finally {
@@ -23,7 +23,7 @@ const Cart = () => {
   };
   useEffect(() => {
     FetchDataHandler();
-  }, [skip]);
+  }, []);
   const AddToCartHandler = (cartData) => {
     setCart([
       ...cart,
@@ -60,20 +60,13 @@ const Cart = () => {
     }, 0);
     setTotal(totalPrice);
   }, [cart]);
-
-  const InfiniteScrollHandler = () => {
-    if (
-      !loading &&
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
-        document.documentElement.scrollHeight
-    ) {
-      setSkip((prev) => prev + 1);
+  const PageChangeHandler = (selectPage) => {
+    if (selectPage > products.length / 10) {
+      return;
     }
+    setPage(selectPage);
   };
-  useEffect(() => {
-    document.addEventListener("scroll", InfiniteScrollHandler);
-    return () => document.removeEventListener("scroll", InfiniteScrollHandler);
-  }, []);
+
   return (
     <div className="w-screen flex flex-col items-center">
       <input
@@ -86,6 +79,7 @@ const Cart = () => {
         <div className="w-8/12 border-r flex justify-between p-2 gap-4 flex-wrap">
           {products
             ?.filter((item) => item.title.toLowerCase().includes(search))
+            .slice(page * 10 - 10, page * 10)
             .map((prod) => (
               <div
                 className="border w-72 h-72 justify-between p-2 rounded-2xl flex items-center flex-col"
@@ -113,7 +107,7 @@ const Cart = () => {
               </div>
             ))}
         </div>
-        <h1>{loading && <>Loading...</>}</h1>
+
         <div className="w-4/12 flex-col p-2">
           {cart.length === 0 ? (
             <h1 className="text-center font-bold text-xl">Cart is Empty...</h1>
@@ -173,8 +167,42 @@ const Cart = () => {
           )}
         </div>
       </div>
+      <div className="flex my-10 border">
+        <div
+          onClick={() => PageChangeHandler(page - 1)}
+          className={
+            page === 1
+              ? "hidden"
+              : "w-10 h-10 flex items-center border-r justify-center bg-white text-black"
+          }
+        >
+          {"<"}
+        </div>
+        {[...Array(products.length / 10)].map((_, i) => (
+          <div
+            onClick={() => PageChangeHandler(i + 1)}
+            className={
+              page === i + 1
+                ? "w-10 h-10 flex items-center border-r justify-center bg-white text-black"
+                : "w-10 h-10 flex items-center border-r justify-center"
+            }
+          >
+            {i + 1}
+          </div>
+        ))}
+        <div
+          onClick={() => PageChangeHandler(page + 1)}
+          className={
+            page === Math.ceil(products.length)
+              ? "hidden"
+              : "w-10 h-10 flex items-center border-r justify-center bg-white text-black "
+          }
+        >
+          {">"}
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Cart;
+export default Pagination;
