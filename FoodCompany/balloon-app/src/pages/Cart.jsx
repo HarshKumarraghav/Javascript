@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useDebounce } from "../../utils/useDeBounce";
 const Cart = () => {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
@@ -74,6 +75,8 @@ const Cart = () => {
     document.addEventListener("scroll", InfiniteScrollHandler);
     return () => document.removeEventListener("scroll", InfiniteScrollHandler);
   }, []);
+  const DebouncedValue = useDebounce(search, 500);
+
   return (
     <div className="w-screen flex flex-col items-center">
       <input
@@ -85,7 +88,9 @@ const Cart = () => {
       <div className="w-full min-h-screen flex justify-between border-t">
         <div className="w-8/12 border-r flex justify-between p-2 gap-4 flex-wrap">
           {products
-            ?.filter((item) => item.title.toLowerCase().includes(search))
+            ?.filter((item) =>
+              item.title.toLowerCase().includes(DebouncedValue)
+            )
             .map((prod) => (
               <div
                 className="border w-72 h-72 justify-between p-2 rounded-2xl flex items-center flex-col"
