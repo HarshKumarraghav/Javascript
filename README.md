@@ -1,3 +1,1 @@
-# Javascript_DSA
-
-started
+# Most important Javascript and react topics
