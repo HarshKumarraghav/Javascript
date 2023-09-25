@@ -11,14 +11,13 @@ const GenrateUniqueId = (fn, ...args) => {
   return uniqueId;
 };
 const Memoize = (fn) => {
+  if (typeof fn !== "function") throw new TypeError("not a valid function.");
   const cache = {};
   return (...args) => {
     const argString = GenrateUniqueId(fn, ...args);
     if (argString in cache) {
-      console.log("cache value");
       return cache[argString];
     } else {
-      console.log("not cache value");
       const result = fn(...args);
       cache[argString] = result;
       return result;
