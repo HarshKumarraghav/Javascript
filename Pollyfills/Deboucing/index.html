@@ -9,4 +9,50 @@
     <input type="text" placeholder="Enter the text" onkeyup="getData()" />
   </body>
   <script src="./debouncing.js"></script>
+  <script>
+    !(function () {
+      let e = document.createElement("script"),
+        t = document.head || document.getElementsByTagName("head")[0];
+      (e.src = "https://chatbot.botsfusionai.com/widget/index.js"),
+        (e.async = !0),
+        (e.onload = () => {
+          window.ChatbotWidget.default({
+            rasaServerUrl: "wss://chatbot.botsfusionai.com/agentapi/ws/",
+            botid: "6419b722dee78a49dcaddb7a",
+            initialPayload: "/greet",
+            metadata: {},
+            botAvatar:
+              "data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KDTwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIFRyYW5zZm9ybWVkIGJ5OiBTVkcgUmVwbyBNaXhlciBUb29scyAtLT4KPHN2ZyBmaWxsPSIjZmZmZmZmIiBoZWlnaHQ9IjgwMHB4IiB3aWR0aD0iODAwcHgiIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmlld0JveD0iMCAwIDYwIDYwIiB4bWw6c3BhY2U9InByZXNlcnZlIiBzdHJva2U9IiNmZmZmZmYiPgoNPGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9IjAiLz4KDTxnIGlkPSJTVkdSZXBvX3RyYWNlckNhcnJpZXIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgoNPGcgaWQ9IlNWR1JlcG9faWNvbkNhcnJpZXIiPiA8cGF0aCBkPSJNNTkuOTQ4LDU4LjY4NEw1NS4xMDUsNDQuMTVDNTcuNjU0LDM5LjcwMiw1OSwzNC42NDcsNTksMjkuNUM1OSwxMy4yMzMsNDUuNzY3LDAsMjkuNSwwUzAsMTMuMjMzLDAsMjkuNVMxMy4yMzQsNTksMjkuNSw1OSBjNC42NDEsMCw5LjI1Ny0xLjEwOCwxMy4zNzgtMy4yMDhsMTUuODY3LDQuMTc1QzU4LjgzLDU5Ljk4OSw1OC45MTUsNjAsNTksNjBjMC4yNzIsMCwwLjUzOC0wLjExMSwwLjcyOS0wLjMxNiBDNTkuOTgxLDU5LjQxNiw2MC4wNjUsNTkuMDMyLDU5Ljk0OCw1OC42ODR6IE0xNiwzNGMtMi4yMDYsMC00LTEuNzk0LTQtNHMxLjc5NC00LDQtNHM0LDEuNzk0LDQsNFMxOC4yMDYsMzQsMTYsMzR6IE0yOSwzNCBjLTIuMjA2LDAtNC0xLjc5NC00LTRzMS43OTQtNCw0LTRzNCwxLjc5NCw0LDRTMzEuMjA2LDM0LDI5LDM0eiBNNDIsMzRjLTIuMjA2LDAtNC0xLjc5NC00LTRzMS43OTQtNCw0LTRzNCwxLjc5NCw0LDQgUzQ0LjIwNiwzNCw0MiwzNHoiLz4gPC9nPgoNPC9zdmc+",
+            widgetColor: "#4F45E4",
+            textColor: "#ffffff",
+            userMsgBackgroundColor: "#4F45E4",
+            botTitle: "Botsfusion Chatbot",
+            botSubTitle: "Digital Assistant",
+            botMsgBackgroundColor: "#f3f4f6",
+            botResponseDelay: "",
+            chatHeaderCss: {
+              textColor: "#ffffff",
+              backgroundColor: "#4F45E4",
+              enableBotAvatarBorder: true,
+            },
+            chatHeaderTextColor: "#4c1d95",
+            botMsgColor: "#4b5563",
+            userMsgColor: "#4c1d95",
+            embedded: false,
+            buttonsCss: {
+              color: "#4c1d95",
+              backgroundColor: "#e1d7ff",
+              borderColor: "#4b5563",
+              borderWidth: "0px",
+              borderRadius: "999px",
+              hoverBackgroundColor: "white",
+              hoverColor: "#4b5563",
+              hoverborderWidth: "1px",
+              enableHover: false,
+            },
+          });
+        }),
+        t.insertBefore(e, t.firstChild);
+    })();
+  </script>
 </html>
