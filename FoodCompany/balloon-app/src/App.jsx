@@ -5,6 +5,7 @@ import Cart from "./pages/Cart";
 import Pagination from "./pages/Pagination";
 import Star from "./pages/Star";
 import TicTacToe from "./pages/TicTacToe";
+import Caraousel from "./pages/Caraousel";
 function App() {
   return (
     <Routes>
@@ -14,6 +15,7 @@ function App() {
       <Route path="/star" element={<Star />} />
       <Route path="/tictactoe" element={<TicTacToe />} />
       <Route path="/pagination" element={<Pagination />} />
+      <Route path="/caraousel" element={<Caraousel />} />
     </Routes>
   );
 }
