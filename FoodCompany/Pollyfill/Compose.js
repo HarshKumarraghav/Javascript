@@ -13,7 +13,7 @@ console.log("result", result);
 const compose =
   (...fns) =>
   (input) =>
-    fns.reduceRight((currentValue, func) => func(currentValue), input);
+    fns.reduceRight((curr, func) => func(curr), input);
 
 const res = compose(IsPositive, Multiply10, Sub30, Add2)(10);
 
