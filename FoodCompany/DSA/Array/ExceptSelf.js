@@ -15,6 +15,8 @@ function productExceptSelf(nums) {
 }
 const nums = [1, 2, 3, 4];
 
+
+
 const result = productExceptSelf(nums);
 
 console.log(result);
