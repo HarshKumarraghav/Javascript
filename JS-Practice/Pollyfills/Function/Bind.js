@@ -12,7 +12,7 @@ const User2 = {
   age: 18,
 };
 
-console.log(User1.userInfo.bind(User1, "Software Engineer")(2));
+console.log("Bind", User1.userInfo.bind(User1, "Software Engineer")(2));
 
 Function.prototype.MyBind = function (context, ...args) {
   if (typeof this !== "function")
