@@ -25,4 +25,4 @@ Function.prototype.MyBind = function (context, ...args) {
   };
   return bind;
 };
-console.log(User1.userInfo.MyBind(User1, "Software Engineer")(2));
+console.log("MyBind", User1.userInfo.MyBind(User1, "Software Engineer")(2));
