@@ -1,1 +1,1 @@
-# Most important Javascript and react topics
+# Most important Javascript and react topics for frontend interview
